@@ -1,0 +1,15 @@
+<krpano version="1.19" title="">
+  <scene name="scene2" title="scene2" onstart="" thumburl="/krpano/panos/scene2.tiles/thumb.jpg" lat="" lng="" heading="">
+
+		<view hlookat="160.0" vlookat="10.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/krpano/panos/scene2.tiles/preview.jpg" />
+
+		<image type="CUBE" multires="true" tilesize="512">
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="/krpano/panos/scene2.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+
+	</scene>
+</krpano>
