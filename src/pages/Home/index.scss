@@ -1,0 +1,68 @@
+.krpano {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+$primaryColor: coral;
+
+.active-btn {
+  color: white;
+  background-color: $primaryColor;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.scene-panel {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  padding: 10px;
+  user-select: none;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.4);
+
+  &__menu {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+    color: white;
+
+    &__item {
+      cursor: pointer;
+
+      &.active {
+        color: $primaryColor;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 10px;
+
+    &__item {
+      flex-shrink: 0;
+      width: 150px;
+      height: 80px;
+      cursor: pointer;
+      border: 2px solid transparent;
+
+      &.active {
+        border-color: $primaryColor;
+      }
+      & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
