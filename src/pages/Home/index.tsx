@@ -17,13 +17,16 @@ import "./index.scss";
 export default function HomePage() {
   const [currentMenu, setCurrentMenu] = useState(0);
   const [currentScene, setCurrentScene] = useState("scene1");
+  const [hotspotHoverName, setHotspotHoverName] = useState("");
   const [autorotateEnable, setAutorotateEnable] = useState(false);
   const SCENE_LIST = useMemo<ISceneProps[]>(
     () => [
       {
         name: "scene1",
-        thumbUrl: "/krpano/panos/scene1.tiles/thumb.jpg",
-        previewUrl: "/krpano/panos/scene1.tiles/preview.jpg",
+        thumbUrl:
+          process.env.PUBLIC_URL + "/krpano/panos/scene1.tiles/thumb.jpg",
+        previewUrl:
+          process.env.PUBLIC_URL + "/krpano/panos/scene1.tiles/preview.jpg",
         imageTagAttributes: {
           type: "cube",
           tileSize: 512,
@@ -33,12 +36,16 @@ export default function HomePage() {
           {
             tiledImageWidth: 1600,
             tiledImageHeight: 1600,
-            url: "/krpano/panos/scene1.tiles/%s/l2/%v/l2_%s_%v_%h.jpg",
+            url:
+              process.env.PUBLIC_URL +
+              "/krpano/panos/scene1.tiles/%s/l2/%v/l2_%s_%v_%h.jpg",
           },
           {
             tiledImageWidth: 768,
             tiledImageHeight: 768,
-            url: "/krpano/panos/scene1.tiles/%s/l1/%v/l1_%s_%v_%h.jpg",
+            url:
+              process.env.PUBLIC_URL +
+              "/krpano/panos/scene1.tiles/%s/l1/%v/l1_%s_%v_%h.jpg",
           },
         ],
         children: (
@@ -56,7 +63,7 @@ export default function HomePage() {
 
             <HotSpot
               name="hotspot1"
-              url="/images/guide.png"
+              url={`${process.env.PUBLIC_URL}/images/guide.png`}
               atv={3}
               ath={-27}
               scale={0.3}
@@ -64,11 +71,34 @@ export default function HomePage() {
               distorted={true}
               onClick={() => setCurrentScene("scene2")}
             />
+
+            <HotSpot
+              name="hotspot2"
+              type="text"
+              atv={-2}
+              ath={-46}
+              scale={0.5}
+              edge="top"
+              bg={false}
+              distorted={true}
+              onClick={() => alert("点击了 hotspot1")}
+              onOver={() => setHotspotHoverName("hotspot2")}
+              onOut={() => setHotspotHoverName("")}
+            >
+              <div
+                className={`hotspot ${
+                  hotspotHoverName === "hotspot2" && "active"
+                }`}
+              >
+                <span>长城</span>
+                <div className="pointer" />
+              </div>
+            </HotSpot>
           </>
         ),
       },
     ],
-    []
+    [hotspotHoverName]
   );
   const MENUS = [
     {
@@ -80,7 +110,8 @@ export default function HomePage() {
       scenes: [
         {
           name: "scene2",
-          thumbUrl: "/krpano/panos/scene2.tiles/thumb.jpg",
+          thumbUrl:
+            process.env.PUBLIC_URL + "/krpano/panos/scene2.tiles/thumb.jpg",
         },
       ],
     },
@@ -122,8 +153,8 @@ export default function HomePage() {
     <div className="home-page">
       <Krpano
         className="krpano"
-        xml="./krpano/scene.xml"
-        webvrUrl="./krpano/plugins/webvr.xml"
+        xml={`${process.env.PUBLIC_URL}/krpano/scene.xml`}
+        webvrUrl={`${process.env.PUBLIC_URL}/krpano/plugins/webvr.xml`}
         currentScene={currentScene}
         passQueryParameters={true}
       >

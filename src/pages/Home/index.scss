@@ -66,3 +66,33 @@ $primaryColor: coral;
     }
   }
 }
+
+.hotspot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    width: 158px;
+    height: 34px;
+    text-align: center;
+    line-height: 34px;
+    font-size: 32px;
+    color: #fce9ac;
+  }
+  .pointer {
+    width: 100px;
+    height: 100px;
+    background: url("../../assets/images/icon_address_normal@2x.png") no-repeat
+      center / contain;
+  }
+  &.active {
+    span {
+      color: red;
+    }
+    .pointer {
+      background-image: url("../../assets/images/icon_address_active@2x.png");
+    }
+  }
+}
