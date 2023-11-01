@@ -153,6 +153,7 @@ export default function HomePage() {
     <div className="home-page">
       <Krpano
         className="krpano"
+        littlePlanetIntro={true}
         xml={`${process.env.PUBLIC_URL}/krpano/scene.xml`}
         webvrUrl={`${process.env.PUBLIC_URL}/krpano/plugins/webvr.xml`}
         currentScene={currentScene}
